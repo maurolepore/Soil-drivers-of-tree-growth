@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Standalone script to run all the analyses and create the various source and \n# result model data frames\n\nif (Sys.getenv(\"R_USER\") == \"\") {\n  basePath <- \"~\"   # The typical R base path on Unix/Mac systems\n} else {\n  basePath <- Sys.getenv(\"R_USER\")  # Windows\n}\n\n# This path needs to be set to the correct path\nbaseRSourcePath <- paste0( basePath, \"/R/Github/Soil-drivers-of-tree-growth/\" )\n\nsource( paste0( baseRSourcePath, \"Source/Env.R\" ) )\nsource( paste0( mainSourcePath, \"packages.R\" ) )\n\n# Do the analyses\nsource( paste0( mainSourcePath, \"All analyses.R\" ) )\n",
+    "created" : 1526979838089.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3007540267",
+    "id" : "75EBD6C7",
+    "lastKnownWriteTime" : 1526979916,
+    "last_content_update" : 1526979916408,
+    "path" : "~/R/Github/Soil-drivers-of-tree-growth/Source/Run analyses.R",
+    "project_path" : "Source/Run analyses.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

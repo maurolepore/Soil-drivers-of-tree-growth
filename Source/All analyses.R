@@ -11,7 +11,7 @@ if ( !exists("PathsAndEnvironmentInitialised") ) {
     # e.g.:
     # baseRSourcePath <- Sys.getenv("R_USER") 
   }
-  source( paste( baseRSourcePath, "Source/Env.R", sep="" ) )
+  source( paste0( baseRSourcePath, "Source/Env.R" ) )
 }
 
 # Set up directories to reference the raw and the reformatted and created growth data
@@ -36,5 +36,10 @@ source( paste0( mainSourcePath, "Stepwise model selection.R" ) )
 # 6. Do the model averaging
 source( paste0( mainSourcePath, "Model averaging.R" ) )
 
-# 7. Additional analyses: leguminous species
+##### Additional analyses ####
+# 7. Response of leguminous species to P and Mn
 source( paste0( mainSourcePath, "Legume Growth Analysis.R" ) )
+
+# 8. Correlation tables and analyses presented in the paper
+source( paste0( mainSourcePath, "Correlations Analyses.R" ) )
+

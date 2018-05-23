@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/R/Github/Soil-drivers-of-tree-growth",
+        "query" : "spptable",
+        "regex" : false
+    }
+}

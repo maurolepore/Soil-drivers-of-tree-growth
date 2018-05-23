@@ -49,39 +49,11 @@ GetGrowthModelData <- function( noSwamp=F )
 # The affinities correspond to the first order affinities, not the second order ones.
 GetDistributionAffinities <- function( species )
 {
-  require(XLConnect) 
-  
-  wb <- loadWorkbook( paste( STRIRawDataPath, "TreeCommunityDrySeasonSpeciesResponse.xlsx", sep="") )
-  df <- readWorksheet( wb, sheet = "TreeCommunityDrySeasonSpeciesRe" )
+  df <- read.csv( paste0( rawDataPath, "TreeCommunityDrySeasonSpeciesResponse.csv") )
   
   df.result <- data.frame()
   for ( i in 1:length(species) ) {
     df.tmp <- df[ grepl( species[i], df$Latin), 3:11]
-    if ( nrow(df.tmp) > 0 ) {
-      df.tmp$sp <- species[i]
-      df.tmp <- df.tmp[, c(ncol(df.tmp), 1:(ncol(df.tmp) - 1))]
-      df.result <- rbind( df.result, df.tmp )
-    }
-  }
-  df.result
-}
-
-# GetIsthmusGrowthCoefs
-# Returns a df with the growth coefs from Brenes-Arguedas et al of tree species across 
-# the Panama isthmus, for the given tree species.
-# The coefs correspond to the first order affinities, not the second order ones.
-GetIsthmusGrowthCoefs <- function( species )
-{
-  require(XLConnect) 
-  
-  wb <- loadWorkbook( paste0( STRIRawDataPath, "Panama Plot Growth Coefs Table S5.xlsx") )
-  df <- readWorksheet( wb, sheet = "Table S4" )
-  # Clean up the bottom of the worksheet and remove columns not wanted
-  df <- df[ -((nrow(df)-19):nrow(df)),-(11:17)]
-  
-  df.result <- data.frame()
-  for ( i in 1:length(species) ) {
-    df.tmp <- df[ grepl( species[i], df$Species), 4:10]
     if ( nrow(df.tmp) > 0 ) {
       df.tmp$sp <- species[i]
       df.tmp <- df.tmp[, c(ncol(df.tmp), 1:(ncol(df.tmp) - 1))]

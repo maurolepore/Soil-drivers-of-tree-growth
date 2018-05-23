@@ -3,7 +3,7 @@
 GetBCILegumes <- function( abbreviation=T, verbose=F )
 {
   df.legumes <- read.csv( paste0( dataPath, "Leguminosae.csv" ) ) # All known Fabaceae species
-  df.latin <- readRDS( paste0( dataPath, "bci_spptable.rds" ) )
+  df.latin <- readRDS( paste0( growthDataPath, "bci_spptable.rds" ) )
   if ( verbose ) {
     str(df.latin)
     str(df.legumes)

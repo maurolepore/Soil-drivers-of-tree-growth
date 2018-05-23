@@ -8,10 +8,10 @@ if (Sys.getenv("R_USER") == "") {
 }
 
 # This path needs to be set to the correct path
-baseRSourcePath <- paste( basePath, "/R/Github/Soil-drivers-of-tree-growth/", sep="" )
+baseRSourcePath <- paste0( basePath, "/R/Github/Soil-drivers-of-tree-growth/" )
 
-source( paste( baseRSourcePath, "Source/Env.R", sep="" ) )
-source( paste( mainSourcePath, "packages.R", sep="" ) )
+source( paste0( baseRSourcePath, "Source/Env.R" ) )
+source( paste0( mainSourcePath, "packages.R" ) )
 
 # Do the analyses
-source( paste( mainSourcePath, "All analyses.R", sep="" ) )
+source( paste0( mainSourcePath, "All analyses.R" ) )

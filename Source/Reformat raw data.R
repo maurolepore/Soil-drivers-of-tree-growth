@@ -13,12 +13,12 @@ CreateRDSObject <- function( inPath, outPath )
 }
 
 if ( !file.exists( paste0( growthDataPath, "BCI tree census 6.rds" ) ) ) {
-  CreateRDSObject( paste0( rawDataPath, "bci.tree6.rdata" ),
+  CreateRDSObject( paste0( rawDataPath, "bci.stem6.rdata" ),
                    paste0( growthDataPath, "BCI tree census 6.rds" ) )
 }
 
 if ( !file.exists( paste0( growthDataPath, "BCI tree census 7.rds" ) ) ) {
-  CreateRDSObject( paste0( rawDataPath, "bci.tree7.rdata" ),
+  CreateRDSObject( paste0( rawDataPath, "bci.stem7.rdata" ),
                    paste0( growthDataPath, "BCI tree census 7.rds" ) )
 }
 
