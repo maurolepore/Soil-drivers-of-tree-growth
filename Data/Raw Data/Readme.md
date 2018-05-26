@@ -9,6 +9,8 @@ CTFS package data and plot elevations are from CTFS (http://ctfs.si.edu/Public/C
 
 Species-specific allometries are from Cushman et al. (2014) Methods in Ecology and Evolution 5:573-582
 
+Species P-affinities across the Panama plots are from Condit et al. (2013) Proceedings of the National Academy of Sciences of the United States of America 110:5064-5068
+
 Data not included, but available elsewhere: Plot census data
 To successfully run the R scripts (which generate rds files) the .rdata census data files need to be placed in this directory.
 The tree census data can be obtained from two sources: 
