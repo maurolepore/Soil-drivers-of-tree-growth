@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Script to compute correlations of soil variables and correlations of P \n# affinities (Condit et al 2013) against P responses, for the paper:\n# Zemunik et al. (2018) Soil drivers of local-scale tree growth in a lowland tropical forest\n\nsource( paste0( mainSourcePath, \"Utilities.R\" ) )\n\n\n############# Soil variables correlations\n# Presented as Table S1 in Appendix S1\nprint( GetModelSoilTopoCorrelations() )\n\n\n\n############# P affinities comparison\ndf.coef <- read.csv( paste0( dataPath, \"BCI growth model Coefs.csv\" ) )\n\n# The affinity table only has Latin names, so to be able to merge it with the responses\n# we need to get the Latin names from the species table\ndf.latin <- readRDS( paste0( growthDataPath, \"bci_spptable.rds\" ) )\n\n# Merge the affinities with the species responses\ndf.aff <- merge( df.coef, df.latin[, 1:2], by=\"sp\")\ndf.aff <- merge( df.aff, GetDistributionAffinities(df.aff$Latin), by.x=\"Latin\", by.y=\"sp\" )\n\n# Inspect correlations\n# Graphically\n# pairs(df.aff[, c(\"M3P\", \"P\", \"Mn3\", \"Al\") ]) # no correlation in affinites\n# Matrix\naffCor <- cor(df.aff[, c(\"M3P\", \"P\", \"Mn3\", \"Al\") ])\n\n# R2 for P affinity\nprint( paste( \"P affinity correlation R2 with P response: \", affCor[\"M3P\", \"P\"]^2) )  # 0.0126\n\n# Assess the relationship with a model\nmod.P <- lm( M3P ~ P, data=df.aff)\n# plot( mod.P )\nsummary( mod.P )  # No relationship for P, p = 0.11, adjusted R2 0.0076, multiple R2 as above\n\n\n",
+    "created" : 1527227888189.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "90479572",
+    "id" : "8209AE4C",
+    "lastKnownWriteTime" : 1527241892,
+    "last_content_update" : 1527241892446,
+    "path" : "~/R/Github/Soil-drivers-of-tree-growth/Source/Correlations Analyses.R",
+    "project_path" : "Source/Correlations Analyses.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

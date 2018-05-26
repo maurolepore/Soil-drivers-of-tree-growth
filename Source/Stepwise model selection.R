@@ -76,6 +76,7 @@ summary(mod.c.reml)
 
 # Save the model? If not, comment out
 saveRDS( mod.c.reml, paste0( dataPath, "Selected growth model.rds" ) )
-write.csv( coef( mod.c.reml ), paste0( dataPath, "BCI growth model Coefs-light,dbh,Mn,P-RE 2010 soil.csv" ) )
+df.coef <- cbind( data.frame( sp=row.names(coef( mod.c.reml )) ), coef( mod.c.reml ) )
+write.csv( df.coef, paste0( dataPath, "BCI growth model Coefs.csv" ), row.names = F )
 
 

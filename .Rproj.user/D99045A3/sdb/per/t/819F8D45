@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Script to krige the soil variables used in the growth model for the paper:\n# Zemunik et al. (2018) Soil drivers of local-scale tree growth in a lowland tropical forest\n\n\n# Check if the kriged soils file does not exist\nif ( !file.exists( paste0( dataPath, \"kriged soils-10m.csv\" ) ) ) {\n\n  # The kriging functionality resides in a package, managed by ForestGEO.\n  # Install the package if need be\n  #install.packages( \"devtools\" )\n  #devtools::install_github(\"forestgeo/fgeo.habitat\")\n  #library(fgeo.habitat) # the kriging functionality\n  \n  # Get the soil data\n  df.soil <- read.csv( paste0( rawDataPath, \"soils.csv\" ) )\n  # Get the kriging semivariogram parameters\n  df.prms <- read.csv( paste0( dataPath, \"krige prms.csv\" ) )\n  \n  df.res <- data.frame()\n  for ( i in 1:nrow(df.prms) ) {\n    prm <- df.prms[i,]\n    prms <- list( model=as.character(prm$model),\n                  kappa=prm$kappa,\n                  nugget=prm$nugget, sill=prm$sill,\n                  range=prm$range )\n    # Do the kriging. Note that the argument useKsLine=T or F should give the same result\n    ks <- fgeo.habitat::GetKrigedSoil( df.soil, var=as.character(prm$var),\n                                       krigeParams=prms, gridSize=10, useKsLine=F )\n    \n    # Store the results in a data frame\n    if ( i == 1 ) {\n      df.res <- ks$df \n    } else {\n      df.res <- cbind( df.res, ks$df[,\"z\"] )\n    }\n  }\n  \n  # Set the column names correctly\n  names( df.res )[3:ncol(df.res)] <- as.character( df.prms$var )\n  \n  # Save the kriged values\n  write.csv( df.res, file=paste0( dataPath, \"kriged soils-10m.csv\" ), row.names=F )\n}",
+    "created" : 1527227568243.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2108306379",
+    "id" : "819F8D45",
+    "lastKnownWriteTime" : 1527244230,
+    "last_content_update" : 1527244230768,
+    "path" : "~/R/Github/Soil-drivers-of-tree-growth/Source/Krige soils.R",
+    "project_path" : "Source/Krige soils.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

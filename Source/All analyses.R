@@ -27,19 +27,22 @@ source( paste0( mainSourcePath, "Reformat raw data.R" ) )
 # 3. Create the growth data files if they don't exist
 source( paste0( mainSourcePath, "Create BCI growth and light data.R" ) )
 
-# 4. Do the analysis to find the best/optimum random effects
+# 4. Krige the soils, if not already done so
+source( paste0( mainSourcePath, "Krige soils.R" ) )
+
+# 5. Do the analysis to find the best/optimum random effects
 source( paste0( mainSourcePath, "Find best model random effects.R" ) )
 
-# 5. Do the backward selection models
+# 6. Do the backward selection models
 source( paste0( mainSourcePath, "Stepwise model selection.R" ) )
 
-# 6. Do the model averaging
+# 7. Do the model averaging
 source( paste0( mainSourcePath, "Model averaging.R" ) )
 
 ##### Additional analyses ####
-# 7. Response of leguminous species to P and Mn
+# 8. Response of leguminous species to P and Mn
 source( paste0( mainSourcePath, "Legume Growth Analysis.R" ) )
 
-# 8. Correlation tables and analyses presented in the paper
+# 9. Correlation tables and analyses presented in the paper
 source( paste0( mainSourcePath, "Correlations Analyses.R" ) )
 

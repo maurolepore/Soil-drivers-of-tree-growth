@@ -1,0 +1,7 @@
+var,lambda,poly.trans,model,nugget,sill,kappa,range
+M3P,0,TRUE,circular,0.11,0.0861,0.5,207
+M3Al,1,TRUE,circular,39315,8525,0.5,202
+M3Mn,0.5,TRUE,circular,7.46,9.62,0.5,187
+M3K,0,TRUE,cauchy,0.175,0.055,1,40
+pH_water,0.5,TRUE,cauchy,0.0082,0.0017,0.5,63.2
+M3Ca,1,TRUE,circular,92.7,8.5,0.5,191.5

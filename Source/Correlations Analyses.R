@@ -12,19 +12,14 @@ print( GetModelSoilTopoCorrelations() )
 
 
 ############# P affinities comparison
-mod <- readRDS( paste0( dataPath, "Selected growth model.rds" ) )
-
-# The random effects coefficients in this model are for four REs: light, DBH, Mn and P
-df.coef <- coef( mod )
+df.coef <- read.csv( paste0( dataPath, "BCI growth model Coefs.csv" ) )
 
 # The affinity table only has Latin names, so to be able to merge it with the responses
 # we need to get the Latin names from the species table
 df.latin <- readRDS( paste0( growthDataPath, "bci_spptable.rds" ) )
 
 # Merge the affinities with the species responses
-df.aff <- data.frame( sp=row.names( df.coef ) )
-df.aff <- cbind( df.aff, df.coef[df.aff$sp,] )
-df.aff <- merge( df.aff, df.latin[, 1:2], by="sp")
+df.aff <- merge( df.coef, df.latin[, 1:2], by="sp")
 df.aff <- merge( df.aff, GetDistributionAffinities(df.aff$Latin), by.x="Latin", by.y="sp" )
 
 # Inspect correlations

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Script to get the legume species in the BCI plot\n\nGetBCILegumes <- function( abbreviation=T, verbose=F )\n{\n  df.legumes <- read.csv( paste0( dataPath, \"Leguminosae.csv\" ) ) # All known Fabaceae species\n  df.latin <- readRDS( paste0( growthDataPath, \"bci_spptable.rds\" ) )\n  if ( verbose ) {\n    str(df.latin)\n    str(df.legumes)\n  }\n  \n  allLegumes <- levels( factor(df.legumes$Genus) )\n  df.BCIlegumes <- df.latin[ df.latin$Genus %in% df.legumes$Genus, ]\n  \n  if( abbreviation ) {\n    return( df.BCIlegumes$sp )\n  } else {\n    return( df.BCIlegumes$Latin )\n  }\n}",
+    "created" : 1527227608489.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2878141372",
+    "id" : "E3694D99",
+    "lastKnownWriteTime" : 1526978328,
+    "last_content_update" : 1526978328,
+    "path" : "~/R/Github/Soil-drivers-of-tree-growth/Source/BCI legumes.R",
+    "project_path" : "Source/BCI legumes.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

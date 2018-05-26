@@ -4,7 +4,7 @@
         "filePatterns" : [
         ],
         "path" : "~/R/Github/Soil-drivers-of-tree-growth",
-        "query" : "spptable",
+        "query" : "Selected growth model",
         "regex" : false
     }
 }

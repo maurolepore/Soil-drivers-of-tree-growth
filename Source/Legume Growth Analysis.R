@@ -4,14 +4,13 @@
 
 library( nlme )
 source( paste0( mainSourcePath, "BCI legumes.R" ) )
-mod.c.reml <- readRDS( paste0( dataPath, "Selected growth model.rds" ) )
 
-# The random effects coefficients in this model are for four REs: light, DBH, Mn and P
-df.coef <- coef( mod.c.reml )
-df.legumes <- df.coef[ row.names(df.coef) %in% GetBCILegumes(), ]
-df.nonlegumes <- df.coef[ !(row.names(df.coef) %in% GetBCILegumes()), ]
+df.coef <- read.csv( paste0( dataPath, "BCI growth model Coefs.csv" ) )
+bciLegumes <- GetBCILegumes()
+df.legumes <- df.coef[ df.coef$sp %in% bciLegumes, ]
+df.nonlegumes <- df.coef[ !(df.coef$sp %in% bciLegumes), ]
 df.coef$legume <- F
-df.coef[ row.names(df.coef) %in% GetBCILegumes(), "legume" ] <- T
+df.coef[ df.coef$sp %in% bciLegumes, "legume" ] <- T
 
 mod.Mn <- gls( Mn3 ~ legume, data=df.coef )
 plot( mod.Mn )
@@ -37,9 +36,9 @@ print( summary(mod.Mn.gls) ) # Legumes more negative by -0.011 (p=0.004)
 mod.light <- gls( l.light ~ legume, data=df.coef )
 mod.light.gls <- gls( l.light ~ legume, data=df.coef, weights = varExp() )
 AIC( mod.light, mod.light.gls )
-summary( mod.light.gls ) # p = 0.7854
+summary( mod.light.gls ) # p = 0.78
 
 mod.dbh <- gls( l.dbh ~ legume, data=df.coef )
 mod.dbh.gls <- gls( l.dbh ~ legume, data=df.coef, weights = varExp() )
 AIC( mod.dbh, mod.dbh.gls )
-summary( mod.dbh.gls ) # p = 0.1082
+summary( mod.dbh.gls ) # p = 0.109
