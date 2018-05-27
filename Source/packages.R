@@ -16,8 +16,8 @@ InstallPackages <- function( requiredPackages )
 }
 
 # These are the packages that are needed
-requiredPackages = c( "car", "effects", "lazyeval", "lsmeans", "MuMIn", "nlme",
-                      "plyr", "reshape2", "spatstat", "stringr" )
+requiredPackages = c( "car", "devtools", "effects", "lazyeval", "lsmeans", "MuMIn", 
+                      "nlme", "plyr", "reshape2", "spatstat", "stringr" )
 
 # Install the packages if need be
 InstallPackages( requiredPackages )

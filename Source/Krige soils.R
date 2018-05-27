@@ -7,9 +7,7 @@ if ( !file.exists( paste0( dataPath, "kriged soils-10m.csv" ) ) ) {
 
   # The kriging functionality resides in a package, managed by ForestGEO.
   # Install the package if need be
-  #install.packages( "devtools" )
   #devtools::install_github("forestgeo/fgeo.habitat")
-  #library(fgeo.habitat) # the kriging functionality
   
   # Get the soil data
   df.soil <- read.csv( paste0( rawDataPath, "soils.csv" ) )
